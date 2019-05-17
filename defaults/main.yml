@@ -1,0 +1,6 @@
+---
+# vm image default vars
+image_offer: CentOS
+image_publisher: OpenLogic
+image_sku: "7.6"
+image_version: latest

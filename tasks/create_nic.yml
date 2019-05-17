@@ -1,0 +1,16 @@
+- name: create Azure virtual machine
+  azure_rm_networkinterface:
+    resource_group: "{{ resource_group }}"
+    name: "{{ vm_name }}"
+    virtual_network: "{{ vm_size }}"
+    subscription_id: "{{ subscription_id }}"
+    tenant: "{{ tenant_id }}"
+    client_id: "{{ client_id}}"
+    secret: "{{ client_secret }}"
+    admin_username: "{{ admin_username }}"
+    admin_password: "{{ admin_password }}"
+    image:
+      offer: "{{ image_offer }}"
+      publisher: "{{ image_publisher }}"
+      sku: "{{ image_sku }}"
+      version: "{{ image_version }}"
