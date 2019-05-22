@@ -20,6 +20,14 @@ security_group_rules:
     access: Deny
     priority: 100
     direction: Inbound
+  - name: 'AllowSSH'
+    protocol: Tcp
+    source_address_prefix:
+      - "{{ ssh_source_server_ip }}"
+    destination_port_range: 22
+    access: Allow
+    priority: 101
+    direction: Inbound
 
 # network interface default vars
 network_interface_name: "{{ vm_name }}-nic"
