@@ -1,4 +1,4 @@
-- name: add azure virtual subnetwork
+- name: add azure subnetwork
   azure_rm_subnet:
     subscription_id: "{{ subscription_id }}"
     tenant: "{{ tenant_id }}"
