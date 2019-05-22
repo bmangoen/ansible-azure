@@ -12,3 +12,11 @@
 - name: display resource
   debug:
     msg: "{{ rg_output }}"
+
+- name: set resource_group variable
+  set_fact:
+    resource_group: "{{ rg_output.state.name }}"
+
+- name: display resource
+  debug:
+    msg: "{{ resource_group }}"
