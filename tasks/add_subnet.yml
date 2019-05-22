@@ -16,7 +16,7 @@
 
 - name: set subnet variable
   set_fact:
-    subnet: "{{ subnet_ouptut.state.name }}"
+    subnet: "{{ subnet_output.state.name }}"
   when: subnet_output is defined
 
 - name: display resource
