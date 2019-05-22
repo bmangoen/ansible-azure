@@ -1,5 +1,5 @@
 - name: create azure virtual network
-  azure_rm_virtual_network:
+  azure_rm_virtualnetwork:
     subscription_id: "{{ subscription_id }}"
     tenant: "{{ tenant_id }}"
     client_id: "{{ client_id}}"
