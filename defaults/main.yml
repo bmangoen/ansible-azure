@@ -13,6 +13,13 @@ public_ip_allocation_method: Dynamic
 
 # security group default vars
 security_group_name: "{{ resource_group_name }}-sg"
+security_group_rules:
+  - name: DenySSH
+    protocol: Tcp
+    destination_port_range: 22
+    access: Deny
+    priority: 100
+    direction: Inbound
 
 # vm size default vars
 vm_size: "Standard_B1ls"

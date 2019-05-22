@@ -6,7 +6,7 @@
     secret: "{{ client_secret }}"
     name: "{{ security_group_name }}"
     resource_group: "{{ resource_group }}"
-    default_rules: true
+    rules: "{{ security_group_rules }}"
   register: sg_output
 
 - name: display resource
