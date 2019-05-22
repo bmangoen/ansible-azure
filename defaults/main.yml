@@ -21,6 +21,9 @@ security_group_rules:
     priority: 100
     direction: Inbound
 
+# network interface default vars
+network_interface_name: "{{ vm_name }}-nic"
+
 # vm size default vars
 vm_size: "Standard_B1ls"
 
