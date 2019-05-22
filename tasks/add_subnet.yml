@@ -21,5 +21,5 @@
 
 - name: display resource
   debug:
-    msg: "{{ virtual_network }}"
+    msg: "{{ subnet }}"
   when: subnet_output is defined
