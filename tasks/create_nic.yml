@@ -7,7 +7,7 @@
     name: "{{ network_interface_name }}"
     resource_group: "{{ resource_group }}"
     virtual_network: "{{ virtual_network }}"
-    subnet: "{{ subnet }}"
+    subnet_name: "{{ subnet }}"
     public_ip: "{{ public_ip }}"
     security_group: "{{ security_group }}"
   register: nic_output
