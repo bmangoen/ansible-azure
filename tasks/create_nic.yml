@@ -8,10 +8,9 @@
     resource_group: "{{ resource_group }}"
     virtual_network: "{{ virtual_network }}"
     subnet_name: "{{ subnet }}"
-    create_with_security_group: false
-    #security_group: 
-    #  name: "{{ security_group }}"
-    #  resource_group: "{{ resource_group }}"
+    security_group: 
+      name: "{{ security_group }}"
+      resource_group: "{{ resource_group }}"
     ip_configurations:
       - name: "{{ public_ip }}"
         public_ip_address_name: "{{ public_ip }}"
