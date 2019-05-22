@@ -16,6 +16,7 @@
 - name: set resource_group variable
   set_fact:
     resource_group: "{{ rg_output.state.name }}"
+  when: rg_output is defined
 
 - name: display resource
   debug:
