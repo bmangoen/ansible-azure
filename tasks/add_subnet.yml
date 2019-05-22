@@ -7,7 +7,7 @@
     name: "{{ subnet_name }}"
     resource_group: "{{ resource_group }}"
     virtual_network: "{{ virtual_network }}"
-    address_prefixes: "{{ subnet_address_prefixes }}"
+    address_prefix_cidr: "{{ subnet_address_prefix_cidr }}"
   register: subnet_output
 
 - name: display resource
