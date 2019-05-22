@@ -11,4 +11,4 @@
 
 - name: display resource
   debug:
-    msg: "{{ rg_output.stdout }}"
+    msg: "{{ rg_output }}"
