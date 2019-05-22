@@ -6,7 +6,7 @@
     secret: "{{ client_secret }}"
     name: "{{ public_ip_name }}"
     resource_group: "{{ resource_group }}"
-    allocation_method: " {{ public_ip_allocation_method }}"
+    allocation_method: "{{ public_ip_allocation_method }}"
   register: public_ip_output
 
 - name: display resource
