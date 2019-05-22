@@ -5,6 +5,7 @@
     client_id: "{{ client_id}}"
     secret: "{{ client_secret }}"
     resource_group: "{{ resource_group }}"
+    network_interfaces: "{{ network_interface }}"
     name: "{{ vm_name }}"
     vm_size: "{{ vm_size }}"
     admin_username: "{{ admin_username }}"

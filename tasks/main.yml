@@ -1,3 +1,9 @@
 ---
 # tasks file for ansible_azure
 - include_tasks: create_rg.yml
+- include_tasks: create_vnet.yml
+- include_tasks: add_subnet.yml
+- include_tasks: create_publicip.yml
+- include_tasks: create_sg.yml
+- include_tasks: create_nic.yml
+- include_tasks: create_vm.yml

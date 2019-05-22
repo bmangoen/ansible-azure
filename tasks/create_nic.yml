@@ -1,16 +1,34 @@
-- name: create Azure virtual machine
-  azure_rm_networkinterface:
-    resource_group: "{{ resource_group }}"
-    name: "{{ vm_name }}"
-    virtual_network: "{{ vm_size }}"
-    subscription_id: "{{ subscription_id }}"
-    tenant: "{{ tenant_id }}"
-    client_id: "{{ client_id}}"
-    secret: "{{ client_secret }}"
-    admin_username: "{{ admin_username }}"
-    admin_password: "{{ admin_password }}"
-    image:
-      offer: "{{ image_offer }}"
-      publisher: "{{ image_publisher }}"
-      sku: "{{ image_sku }}"
-      version: "{{ image_version }}"
+- block:
+  - name: create azure network interface
+    azure_rm_networkinterface:
+      subscription_id: "{{ subscription_id }}"
+      tenant: "{{ tenant_id }}"
+      client_id: "{{ client_id}}"
+      secret: "{{ client_secret }}"
+      name: "{{ network_interface_name }}"
+      resource_group: "{{ resource_group }}"
+      virtual_network: "{{ virtual_network }}"
+      subnet: "{{ subnet }}"
+      public_ip: "{{ public_ip }}"
+      security_group: "{{ security_group }}"
+    register: nic_output
+  
+  - name: display resource
+    debug:
+      msg: "{{ nic_output }}"
+  
+  - name: set virtual_network variable
+    set_fact:
+      network_interface: "{{ nic_output.state.name }}"
+    when: nic_output is defined
+  
+  - name: display resource
+    debug:
+      msg: "{{ network_interface }}"
+    when: nic_output is defined
+when: 
+- resource_group is defined
+- virtual_network is defined
+- subnet is defined
+- public_ip is defined
+- security_group is defined

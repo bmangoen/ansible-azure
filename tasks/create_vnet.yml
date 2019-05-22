@@ -1,0 +1,26 @@
+- block:
+  - name: create azure virtual network
+    azure_rm_virtual_network:
+      subscription_id: "{{ subscription_id }}"
+      tenant: "{{ tenant_id }}"
+      client_id: "{{ client_id}}"
+      secret: "{{ client_secret }}"
+      name: "{{ virtual_network_name }}"
+      resource_group: "{{ resource_group }}"
+      address_prefixes: "{{ virtual_network_address_prefixes }}"
+    register: vnet_output
+  
+  - name: display resource
+    debug:
+      msg: "{{ vnet_output }}"
+  
+  - name: set virtual_network variable
+    set_fact:
+      virtual_network: "{{ vnet_output.state.name }}"
+    when: vnet_output is defined
+  
+  - name: display resource
+    debug:
+      msg: "{{ virtual_network }}"
+    when: vnet_output is defined
+when: resource_group is defined
