@@ -1,9 +1,28 @@
 ---
 # tasks file for ansible_azure
 - include_tasks: create_rg.yml
+
 - include_tasks: create_vnet.yml
+  when: resource_group is defined
+
 - include_tasks: add_subnet.yml
+  when: virtual_network is defined
+
 - include_tasks: create_publicip.yml
+  when: resource_group is defined
+
 - include_tasks: create_sg.yml
+  when: resource_group is defined
+
 - include_tasks: create_nic.yml
+  when: 
+  - resource_group is defined
+  - virtual_network is defined
+  - subnet is defined
+  - public_ip is defined
+  - security_group is defined
+
 - include_tasks: create_vm.yml
+  when: 
+  - resource_group is defined
+  - network_interface is defined

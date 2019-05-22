@@ -1,26 +1,24 @@
-- block:
-  - name: create azure public ip
-    azure_rm_publicipaddress:
-      subscription_id: "{{ subscription_id }}"
-      tenant: "{{ tenant_id }}"
-      client_id: "{{ client_id}}"
-      secret: "{{ client_secret }}"
-      name: "{{ public_ip_name }}"
-      resource_group: "{{ resource_group }}"
-      allocation_method: " {{ public_ip_allocation_method }}"
-    register: public_ip_output
-  
-  - name: display resource
-    debug:
-      msg: "{{ public_ip_output }}"
-  
-  - name: set virtual_network variable
-    set_fact:
-      public_ip: "{{ public_ip_output.state.name }}"
-    when: public_ip_output is defined
-  
-  - name: display resource
-    debug:
-      msg: "{{ public_ip }}"
-    when: public_ip_output is defined
-  when: resource_group is defined
+- name: create azure public ip
+  azure_rm_publicipaddress:
+    subscription_id: "{{ subscription_id }}"
+    tenant: "{{ tenant_id }}"
+    client_id: "{{ client_id}}"
+    secret: "{{ client_secret }}"
+    name: "{{ public_ip_name }}"
+    resource_group: "{{ resource_group }}"
+    allocation_method: " {{ public_ip_allocation_method }}"
+  register: public_ip_output
+
+- name: display resource
+  debug:
+    msg: "{{ public_ip_output }}"
+
+- name: set virtual_network variable
+  set_fact:
+    public_ip: "{{ public_ip_output.state.name }}"
+  when: public_ip_output is defined
+
+- name: display resource
+  debug:
+    msg: "{{ public_ip }}"
+  when: public_ip_output is defined

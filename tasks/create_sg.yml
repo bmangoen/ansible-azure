@@ -1,26 +1,24 @@
-- block:
-  - name: create azure security group
-    azure_rm_securitygroup:
-      subscription_id: "{{ subscription_id }}"
-      tenant: "{{ tenant_id }}"
-      client_id: "{{ client_id}}"
-      secret: "{{ client_secret }}"
-      name: "{{ security_group_name }}"
-      resource_group: "{{ resource_group }}"
-      default_rules: true
-    register: sg_output
-  
-  - name: display resource
-    debug:
-      msg: "{{ sg_output }}"
-  
-  - name: set virtual_network variable
-    set_fact:
-      security_group: "{{ sg_output.state.name }}"
-    when: sg_output is defined
-  
-  - name: display resource
-    debug:
-      msg: "{{ security_group }}"
-    when: sg_output is defined
-  when: resource_group is defined
+- name: create azure security group
+  azure_rm_securitygroup:
+    subscription_id: "{{ subscription_id }}"
+    tenant: "{{ tenant_id }}"
+    client_id: "{{ client_id}}"
+    secret: "{{ client_secret }}"
+    name: "{{ security_group_name }}"
+    resource_group: "{{ resource_group }}"
+    default_rules: true
+  register: sg_output
+
+- name: display resource
+  debug:
+    msg: "{{ sg_output }}"
+
+- name: set virtual_network variable
+  set_fact:
+    security_group: "{{ sg_output.state.name }}"
+  when: sg_output is defined
+
+- name: display resource
+  debug:
+    msg: "{{ security_group }}"
+  when: sg_output is defined

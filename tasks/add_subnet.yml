@@ -1,27 +1,25 @@
-- block:
-  - name: add azure virtual subnetwork
-    azure_rm_subnet:
-      subscription_id: "{{ subscription_id }}"
-      tenant: "{{ tenant_id }}"
-      client_id: "{{ client_id}}"
-      secret: "{{ client_secret }}"
-      name: "{{ subnet_name }}"
-      resource_group: "{{ resource_group }}"
-      virtual_network: "{{ virtual_network }}"
-      address_prefixes: "{{ subnet_address_prefixes }}"
-    register: subnet_output
-  
-  - name: display resource
-    debug:
-      msg: "{{ subnet_output }}"
-  
-  - name: set subnet variable
-    set_fact:
-      subnet: "{{ subnet_ouptut.state.name }}"
-    when: subnet_output is defined
-  
-  - name: display resource
-    debug:
-      msg: "{{ virtual_network }}"
-    when: subnet_output is defined
-when: virtual_network is defined
+- name: add azure virtual subnetwork
+  azure_rm_subnet:
+    subscription_id: "{{ subscription_id }}"
+    tenant: "{{ tenant_id }}"
+    client_id: "{{ client_id}}"
+    secret: "{{ client_secret }}"
+    name: "{{ subnet_name }}"
+    resource_group: "{{ resource_group }}"
+    virtual_network: "{{ virtual_network }}"
+    address_prefixes: "{{ subnet_address_prefixes }}"
+  register: subnet_output
+
+- name: display resource
+  debug:
+    msg: "{{ subnet_output }}"
+
+- name: set subnet variable
+  set_fact:
+    subnet: "{{ subnet_ouptut.state.name }}"
+  when: subnet_output is defined
+
+- name: display resource
+  debug:
+    msg: "{{ virtual_network }}"
+  when: subnet_output is defined
