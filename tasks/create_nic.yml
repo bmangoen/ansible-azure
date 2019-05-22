@@ -8,9 +8,11 @@
     resource_group: "{{ resource_group }}"
     virtual_network: "{{ virtual_network }}"
     subnet_name: "{{ subnet }}"
-    security_group: "{{ security_group }}"
+    security_group: 
+      name: "{{ security_group }}"
+      resource_group: "{{ resource_group }}"
     ip_configurations:
-      - name: "ipconfig1"
+      - name: "{{ public_ip }}"
         public_ip_address_name: "{{ public_ip }}"
         primary: true
   register: nic_output
