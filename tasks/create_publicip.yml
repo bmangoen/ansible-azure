@@ -23,4 +23,4 @@
     debug:
       msg: "{{ public_ip }}"
     when: public_ip_output is defined
-when: resource_group is defined
+  when: resource_group is defined
