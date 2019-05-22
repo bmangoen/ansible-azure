@@ -9,7 +9,7 @@ subnet_address_prefix_cidr: "10.0.0.0/24"
 
 # public ip default vars
 public_ip_name: "{{ resource_group_name }}-ip"
-public_ip_allocation_method: "Dynamic"
+public_ip_allocation_method: Dynamic
 
 # security group default vars
 security_group_name: "{{ resource_group_name }}-sg"
