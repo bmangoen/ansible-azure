@@ -10,7 +10,7 @@
     subnet_name: "{{ subnet }}"
     security_group: "{{ security_group }}"
     ip_configurations:
-      - name: "{{ public_ip }}"
+      - name: "ipconfig1"
         public_ip_address_name: "{{ public_ip }}"
         primary: true
   register: nic_output
