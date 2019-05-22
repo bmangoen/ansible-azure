@@ -19,7 +19,7 @@
     subnet: "{{ subnet_output.state.name }}"
   when: subnet_output is defined
 
-- name: display resource
+- name: display subnet resource
   debug:
     msg: "{{ subnet }}"
   when: subnet_output is defined
